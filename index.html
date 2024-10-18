@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Dev Coding Forum</title>
+    <title>C# Commands for Unity - Game Dev Coding Forum</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #e8e8e8;
             background-color: #1a1a1a;
             margin: 0;
             padding: 0;
@@ -62,8 +62,8 @@
             font-weight: bold;
         }
         #showcase {
-            min-height: 400px;
-            background: url('/api/placeholder/1200/400') no-repeat center;
+            min-height: 300px;
+            background: url('/api/placeholder/1200/300') no-repeat center;
             background-size: cover;
             text-align: center;
             color: #ffffff;
@@ -76,27 +76,38 @@
         #showcase p {
             font-size: 20px;
         }
-        #languages {
-            margin-top: 20px;
-        }
-        .language-box {
-            float: left;
-            text-align: center;
-            width: 30%;
-            padding: 10px;
-            background: #2a2a2a;
-            margin: 5px;
+        .command-block {
+            background-color: #2a2a2a;
             border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
         }
-        .language-box img {
-            width: 90px;
-            height: 90px;
-        }
-        .language-box h3 {
+        .command-name {
             color: #e8491d;
+            font-weight: bold;
+            font-size: 1.2em;
         }
-        .language-box p {
-            color: #ffffff;
+        .command-description {
+            margin-top: 10px;
+        }
+        .command-example {
+            background-color: #3a3a3a;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .command-usage {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        .command-usage li {
+            margin-bottom: 5px;
+        }
+        h2 {
+            color: #e8491d;
+            border-bottom: 2px solid #e8491d;
+            padding-bottom: 10px;
         }
     </style>
 </head>
@@ -108,8 +119,8 @@
             </div>
             <nav>
                 <ul>
-                    <li class="current"><a href="index.html">Home</a></li>
-                    <li><a href="csharp.html">C#</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="csharp.html">C#</a></li>
                     <li><a href="cpp.html">C++</a></li>
                     <li><a href="javascript.html">JavaScript</a></li>
                     <li><a href="lua.html">Lua</a></li>
@@ -121,39 +132,246 @@
 
     <section id="showcase">
         <div class="container">
-            <h1>Welcome to Game Dev Coding Forum</h1>
-            <p>Discuss, share, and learn game development techniques across multiple programming languages</p>
+            <h1>C# Commands for Unity</h1>
+            <p>Essential C# commands and functions for game development in Unity</p>
         </div>
     </section>
 
-    <section id="languages">
+    <section id="content">
         <div class="container">
-            <div class="language-box">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIv06LdmU38pm8F2YPvh0-2hMYIlMV1pmxkg&s" alt="C# Logo">
-                <h3>C#</h3>
-                <p>Discuss Unity development and more</p>
+            <h2>Movement and Transform Commands</h2>
+            
+            <div class="command-block">
+                <div class="command-name">transform.Translate()</div>
+                <div class="command-description">
+                    Moves the transform in the direction and distance of translation.
+                </div>
+                <div class="command-example">
+                    transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Use this in the Update() method for continuous movement.</li>
+                        <li>Multiply by Time.deltaTime to make movement frame-rate independent.</li>
+                        <li>Can use Vector3.forward, Vector3.right, etc., or create custom vectors.</li>
+                        <li>Combine with Input.GetAxis() for player-controlled movement.</li>
+                    </ol>
+                </div>
             </div>
-            <div class="language-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" alt="C++ Logo">
-                <h3>C++</h3>
-                <p>Talk about Unreal Engine and low-level optimization</p>
+
+            <div class="command-block">
+                <div class="command-name">transform.Rotate()</div>
+                <div class="command-description">
+                    Rotates the transform by the specified angles.
+                </div>
+                <div class="command-example">
+                    transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Use in Update() for continuous rotation.</li>
+                        <li>The parameters represent rotation around x, y, and z axes respectively.</li>
+                        <li>Multiply by Time.deltaTime for smooth, frame-rate independent rotation.</li>
+                        <li>Can be used with Input.GetAxis() for player-controlled rotation.</li>
+                    </ol>
+                </div>
             </div>
-            <div class="language-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Logo">
-                <h3>JavaScript</h3>
-                <p>Explore web-based game development</p>
+
+            <div class="command-block">
+                <div class="command-name">transform.LookAt()</div>
+                <div class="command-description">
+                    Rotates the transform so the forward vector points at target's current position.
+                </div>
+                <div class="command-example">
+                    transform.LookAt(targetTransform);
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Useful for making an object face another object (e.g., enemy facing player).</li>
+                        <li>Can be used in Update() for continuous tracking.</li>
+                        <li>The target can be any Transform in your scene.</li>
+                        <li>Can be combined with Vector3.Lerp() for smoother rotation.</li>
+                    </ol>
+                </div>
             </div>
-            <div class="language-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Lua-Logo.svg" alt="Lua Logo">
-                <h3>Lua</h3>
-                <p>Scripting for game engines and more</p>
+
+            <h2>Input Commands</h2>
+            
+            <div class="command-block">
+                <div class="command-name">Input.GetAxis()</div>
+                <div class="command-description">
+                    Returns the value of the virtual axis identified by axisName.
+                </div>
+                <div class="command-example">
+                    float horizontalInput = Input.GetAxis("Horizontal");
+                    float verticalInput = Input.GetAxis("Vertical");
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Use in Update() to continuously check for input.</li>
+                        <li>"Horizontal" axis is usually mapped to A/D or left/right arrow keys.</li>
+                        <li>"Vertical" axis is usually mapped to W/S or up/down arrow keys.</li>
+                        <li>Returns a float between -1 and 1, useful for smooth movement.</li>
+                        <li>Can be used with transform.Translate() for player movement.</li>
+                    </ol>
+                </div>
             </div>
-            <div class="language-box">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/2048px-HTML5_logo_and_wordmark.svg.png" alt="HTML Logo">
-                <h3>HTML</h3>
-                <p>Create game interfaces and web-based games</p>
+
+            <div class="command-block">
+                <div class="command-name">Input.GetKeyDown()</div>
+                <div class="command-description">
+                    Returns true during the frame the user starts pressing the key identified by name.
+                </div>
+                <div class="command-example">
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        Jump();
+                    }
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Use in Update() to check for key presses.</li>
+                        <li>Only returns true on the initial press, not while holding the key.</li>
+                        <li>Useful for actions that should happen once per key press (e.g., jumping, shooting).</li>
+                        <li>Can use KeyCode enum for specific keys, or string names like "space".</li>
+                    </ol>
+                </div>
             </div>
-        </div>
-    </section>
-</body>
-</html>
+
+            <div class="command-block">
+                <div class="command-name">Input.GetMouseButtonDown()</div>
+                <div class="command-description">
+                    Returns true during the frame the user pressed the given mouse button.
+                </div>
+                <div class="command-example">
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Shoot();
+                    }
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Use in Update() to check for mouse clicks.</li>
+                        <li>0 is left click, 1 is right click, 2 is middle click.</li>
+                        <li>Only returns true on the initial click, not while holding the button.</li>
+                        <li>Useful for actions like shooting, selecting objects, etc.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h2>Physics Commands</h2>
+            
+            <div class="command-block">
+                <div class="command-name">Rigidbody.AddForce()</div>
+                <div class="command-description">
+                    Adds a force to the Rigidbody.
+                </div>
+                <div class="command-example">
+                    rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Requires a Rigidbody component on the GameObject.</li>
+                        <li>Use ForceMode.Impulse for instant force application (good for jumps).</li>
+                        <li>Use ForceMode.Force for continuous force application.</li>
+                        <li>Can be used in FixedUpdate() for physics-based movement.</li>
+                        <li>Combine with Input commands for player-controlled physics movement.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command-name">Physics.Raycast()</div>
+                <div class="command-description">
+                    Casts a ray against all colliders in the scene and returns detailed information on what was hit.
+                </div>
+                <div class="command-example">
+                    RaycastHit hit;
+                    if (Physics.Raycast(transform.position, transform.forward, out hit, 100))
+                    {
+                        Debug.Log("Hit " + hit.collider.name);
+                    }
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Useful for line of sight checks, shooting mechanics, object detection.</li>
+                        <li>Can be used in Update() for continuous checking.</li>
+                        <li>The out parameter 'hit' contains information about what was hit.</li>
+                        <li>Can be combined with Debug.DrawRay() to visualize the ray in the Scene view.</li>
+                        <li>Use LayerMask to selectively ignore certain objects.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h2>Game Object and Component Commands</h2>
+            
+            <div class="command-block">
+                <div class="command-name">GameObject.FindGameObjectWithTag()</div>
+                <div class="command-description">
+                    Returns one active GameObject tagged tag. Returns null if no GameObject was found.
+                </div>
+                <div class="command-example">
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Useful for finding specific objects in the scene.</li>
+                        <li>Best used in Start() or Awake(), as it's relatively slow for frequent use.</li>
+                        <li>Make sure the target object has the correct tag assigned in the Unity Inspector.</li>
+                        <li>Returns null if no object with the tag is found, so check for null before using.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command-name">GetComponent&lt;T&gt;()</div>
+                <div class="command-description">
+                    Returns the component of Type T if the game object has one attached, null if it doesn't.
+                </div>
+                <div class="command-example">
+                    Rigidbody rb = GetComponent&lt;Rigidbody&gt;();
+                    if (rb != null)
+                    {
+                        rb.AddForce(Vector3.up * 10);
+                    }
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Use to access other components on the same GameObject.</li>
+                        <li>Best used in Start() or Awake() and stored in a variable for later use.</li>
+                        <li>Can be used with any component type (e.g., Collider, Renderer, custom scripts).</li>
+                        <li>Always check for null before using the returned component.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h2>Coroutines</h2>
+            
+            <div class="command-block">
+                <div class="command-name">StartCoroutine()</div>
+                <div class="command-description">
+                    Starts a coroutine, which can be used for actions that take place over time.
+                </div>
+                <div class="command-example">
+                    StartCoroutine(WaitAndPrint(5f));
+
+                    IEnumerator WaitAndPrint(float waitTime)
+                    {
+                        yield return new WaitForSeconds(waitTime);
+                        Debug.Log("Printed after " + waitTime + " seconds");
+                    }
+                </div>
+                <div class="command-usage">
+                    <h4>How to use:</h4>
+                    <ol>
+                        <li>Useful for actions that need to happen over time or with delays
